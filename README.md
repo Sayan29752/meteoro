@@ -1,1 +1,116 @@
-# meteoro
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lluvia de esstrellas</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    /* Video de fondo */
+    #bgVideo {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      filter: brightness(0.7);
+    }
+
+    /* Botón centrado */
+    .boton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255,64,129, 0.9);
+      color: white;
+      font-size: 24px;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff4081;
+      transition: transform 0.3s;
+      z-index: 2;
+    }
+
+    .boton:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Texto animado */
+    .mensaje {
+      position: absolute;
+      top: 20%;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 36px;
+      font-family: 'Arial', sans-serif;
+      text-shadow: 0 0 15px #fff;
+      opacity: 0;
+      transition: opacity 2s;
+      z-index: 2;
+    }
+
+    .linea {
+      opacity: 0;
+      margin: 20px 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .linea.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video de fondo -->
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="lluvia de estrellas.mp4" type="video/mp4">
+    Tu navegador no soporta video de fondo.
+  </video>
+
+  <!-- Botón -->
+  <button class="boton" onclick="mostrarMensaje()">DA CLICK AQUÍ</button>
+
+  <!-- Mensaje romántico -->
+  <div class="mensaje" id="mensaje">
+    <div class="linea" id="linea1">NO TE VI</div>
+    <div class="linea" id="linea2">PERO SÉ QUE HOY ESTUVISTE TAN BONITA :D</div>
+    <div class="linea" id="linea3">QUE LE DAS CELOS AL CIELO</div>
+    <div class="linea" id="linea4">Esperaaaa........</div>
+
+  </div>
+
+  <!-- Audio (agrega tu propio archivo de música) -->
+  <audio id="musica" src="La Mujer Perfecta.mp3"></audio>
+
+  <script>
+    function mostrarMensaje() {
+      document.querySelector('.boton').style.display = 'none';
+      const musica = document.getElementById('musica');
+      musica.play();
+
+      const mensaje = document.getElementById('mensaje');
+      mensaje.style.opacity = 1;
+
+      setTimeout(() => document.getElementById('linea1').classList.add('visible'), 1000);
+      setTimeout(() => document.getElementById('linea2').classList.add('visible'), 4000);
+      setTimeout(() => document.getElementById('linea3').classList.add('visible'), 7000);
+      setTimeout(() => document.getElementById('linea4').classList.add('visible'), 8000);
+    }
+  </script>
+
+</body>
+</html>
